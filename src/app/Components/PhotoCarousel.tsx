@@ -22,19 +22,24 @@ const PhotoCarousel = () => {
 
   const marginRight = 20
 
-  // State pour stocker les dimensions de la fenêtre
+  // Initialiser avec des valeurs par défaut pour éviter l'accès direct à "document" lors du SSR
   const [windowDimensions, setWindowDimensions] = useState({
-    width: document.documentElement.clientWidth,
-    height: document.documentElement.clientHeight
+    width: 0,
+    height: 0
   })
 
   useEffect(() => {
+    // Mettre à jour les dimensions côté client
     const handleResize = () => {
       setWindowDimensions({
         width: document.documentElement.clientWidth,
         height: document.documentElement.clientHeight
       })
     }
+
+    // Définir les dimensions initiales
+    handleResize()
+
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
@@ -42,19 +47,23 @@ const PhotoCarousel = () => {
   // Détermine si l'appareil est mobile (moins de 768px de largeur)
   const isMobile = windowDimensions.width < 768
 
-  // Dimensions calculées dynamiquement
-  const imageDimension = windowDimensions.height - 200
-  const containerWidth = windowDimensions.width - 200
-  const sidePadding = (containerWidth - imageDimension) / 2
+  // Calcul des dimensions uniquement si on a une largeur > 0
+  const imageDimension =
+    windowDimensions.width > 0 ? windowDimensions.height - 200 : 0
+  const containerWidth =
+    windowDimensions.width > 0 ? windowDimensions.width - 200 : 0
+  const sidePadding =
+    containerWidth > 0 ? (containerWidth - imageDimension) / 2 : 0
 
   // Calcul de la largeur d'une série d'images et duplication pour effet infini
-  const singleSetWidth = images.length * (imageDimension + marginRight)
+  const singleSetWidth =
+    imageDimension > 0 ? images.length * (imageDimension + marginRight) : 0
   const carouselImages = [...images, ...images, ...images]
 
   // Positionnement initial du scroll pour centrer la série du milieu
   useEffect(() => {
     const container = scrollContainerRef.current
-    if (container) {
+    if (container && sidePadding && singleSetWidth) {
       container.scrollLeft = sidePadding + singleSetWidth
     }
   }, [sidePadding, singleSetWidth])
