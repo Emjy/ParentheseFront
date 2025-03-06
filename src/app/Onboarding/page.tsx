@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { TypeAnimation } from 'react-type-animation'
 import { motion } from 'framer-motion'
 
-import styles from './Page.module.css'
+import styles from './page.module.css'
 
 export default function onboarding() {
   const router = useRouter()
