@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 120px;
+    z-index: 1;
+    overflow: auto;
+    height: 100vh;
+}
+
+/* Sur mobile, réduction du padding pour optimiser l'espace */
+@media (max-width: 768px) {
+    .container {
+        flex-wrap: nowrap;
+        padding: 40px;
+    }
+}

@@ -1,0 +1,86 @@
+.container {
+    display: flex;
+    flex: 0 0 auto;
+    width: 400px;
+    /* Largeur fixe sur desktop */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    border-radius: 16px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    flex-grow: 1;
+    justify-content: flex-start;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 16px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 16px;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Sur mobile : les cards occupent 80% de la largeur de l'écran et le scroll sera horizontal via le conteneur parent */
+@media (max-width: 768px) {
+    .container {
+        width: 80vw;
+        /* 80% de la largeur du viewport */
+        height: auto;
+        /* Laisser la hauteur s'adapter au contenu */
+        margin-right: 16px;
+        /* Espace entre les cards dans le scroll horizontal */
+    }
+
+    .imageContainer {
+        height: 200px;
+        width: 100%;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+}
+
+/* Pour les très petits écrans */
+@media (max-width: 480px) {
+    .container {
+        width: 80vw;
+        /* Même principe pour les écrans très petits */
+        height: 60%;
+    }
+
+    .imageContainer {
+        height: 180px;
+        width: 100%;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .description {
+        font-size: 12px;
+    }
+}

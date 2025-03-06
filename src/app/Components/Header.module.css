@@ -1,0 +1,87 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0px 40px;
+    font-size: 32px;
+    z-index: 1000;
+}
+
+.name {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Nouvelle Vague', sans-serif;
+    color: white;
+    cursor: pointer;
+}
+
+.rightContainer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 16px;
+}
+
+.button {
+    color: white;
+    border: 1px solid white;
+    padding: 8px 16px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.button:hover {
+    border: 1px solid white;
+    background-color: white;
+    color: black;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    width: 45px;
+    height: 45px;
+    border-radius: 120px;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    color: rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+    transition: background-color 0.4s, color 0.4s;
+    border: 1px solid white;
+    color: white;
+    font-weight: bold;
+}
+
+.langueButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    width: 45px;
+    height: 45px;
+    border-radius: 120px;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    color: rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+    transition: background-color 0.4s, color 0.4s;
+    border: 1px solid white;
+    color: white;
+    font-weight: bold;
+}
+
+
+@media (max-width: 768px) {
+    .button {
+        display: none
+    }
+}

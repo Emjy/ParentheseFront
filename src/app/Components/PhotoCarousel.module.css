@@ -1,0 +1,58 @@
+.scrollContainer {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: 100%;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE et Edge */
+}
+
+/* Pour Chrome, Safari et Opera */
+.scrollContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.innerWrapper {
+    display: flex;
+}
+
+.imageContainer {
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    border-radius: 40px;
+    margin-right: 20px;
+}
+
+.imageContent {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 40px;
+}
+
+.monogramWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+/* Media queries pour adapter le carousel sur écrans plus petits */
+@media (max-width: 768px) {
+    .imageContainer {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-right: 10px;
+        border-radius: 20px;
+    }
+
+    .imageContent {
+        border-radius: 20px;
+    }
+}

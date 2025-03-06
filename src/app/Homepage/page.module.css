@@ -1,0 +1,196 @@
+/* Le conteneur principal occupe toute la fenêtre et masque le débordement */
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Le conteneur des sections utilise la hauteur du viewport en tenant compte de la safe-area du bas */
+.contentContainer {
+    height: calc(100vh - env(safe-area-inset-bottom));
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Chaque section occupe exactement le viewport et se snappe en haut */
+.section,
+.sectionFull
+{
+        height: calc(100vh - env(safe-area-inset-bottom));
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    align-items: flex-start;
+    /* Aligne le contenu en haut */
+    justify-content: center;
+    position: relative;
+    padding-top: 100px;
+}
+.sectionHome {
+    height: calc(100vh - env(safe-area-inset-bottom));
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    align-items: flex-start;
+    /* Aligne le contenu en haut */
+    justify-content: center;
+    position: relative;
+}
+
+/* Masquer la scrollbar sur Chrome, Safari et Opera */
+.contentContainer::-webkit-scrollbar {
+    display: none;
+}
+
+/* Les styles spécifiques aux sections déjà définies restent inchangés */
+.homeBackgroundContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.homeBackground {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.logoContainer {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    z-index: 1000;
+    height: 80%;
+    align-items: center;
+    justify-content: center;
+}
+
+.homeButtons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button {
+    border: 1px solid white;
+    padding: 8px 16px;
+    border-radius: 16px;
+    cursor: pointer;
+    color: white;
+}
+
+.sideBarContainer {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    padding-inline: 40px;
+    z-index: 10000;
+}
+
+.title {
+    font-size: 2vw;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    transition: opacity 2s ease-in;
+    color: white;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    gap: 16px;
+}
+
+.map {
+    width: 500px;
+    height: 500px;
+    border: 1px solid white;
+    border-radius: 100%;
+    animation: rotate 120s infinite linear;
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    z-index: 1000;
+    color: white; 
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Ajustements sur mobile */
+@media (max-width: 768px) {
+
+    /* On conserve le scroll snap sur mobile pour que chaque section occupe le viewport */
+    .contentContainer {
+        height: calc(100vh - env(safe-area-inset-bottom));
+        scroll-snap-type: y mandatory;
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .section,
+    .sectionFull,
+    .sectionHome {
+        height: calc(100vh - env(safe-area-inset-bottom));
+    }
+
+    .logoContainer {
+        padding: 50px;
+    }
+
+    .title {
+        font-size: 5vw;
+    }
+
+    .sideBarContainer {
+        display: none;
+    }
+
+    .button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .map {
+        width: 300px;
+        height: 300px;
+        border: 1px solid white;
+        border-radius: 100%;
+        animation: rotate 120s infinite linear;
+    }
+
+    .contactInfo {
+        font-size: 12px;
+    }
+}
